@@ -67,6 +67,7 @@ table {
 </div>
 
 <div id="New Customer" class="tabcontent">
+  <form action="{{ url_for('search')}}" method="POST">
   <h3>New Customer Form</h3>
   <label for="FirstName">First Name </label>
   <input type="text" name="FirstName">
@@ -80,10 +81,10 @@ table {
   <label for="OrderDate">Order Date </label>
   <input type="date" name="OrderDate">
   <br/><br/>
-  <label for="CADFiles">MonuCAD File(s) </label>
-  <input type="file" name="CADFiles">
+  <label for="Files">MonuCAD File(s) </label>
+  <input type="file" name="Files">
   <br/><br/>
-  <input type="submit" name="Save" value="Save">
+  <input type="submit" name="submit" class="submit" value="addnew">
 </div>
 
 <div id="Returning Customer" class="tabcontent">
@@ -99,11 +100,11 @@ table {
     <option value="LastName">Last Name</option>
     <option value="FirstLast">First Name Last Name</option>
    </select> 
-  <input type="submit" name="submit" class="submit" value="Search" data-href="result.html" onclick="setSearch()">
+  <input type="submit" name="submit" class="submit" value="Search" onclick="setSearch()">
   {% if result is defined %}
     <div>
       <p>Search Results</p>
-      {{ result.to_html(index=False) | safe }}
+      {{ result.to_html(index=False, justify='left') | safe }}
     </div>
    {% endif %}
 </div>
